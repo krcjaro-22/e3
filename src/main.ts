@@ -5,7 +5,10 @@ const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute(
+  "aria-label",
+  "A playful face with freckles across the cheeks and nose",
+);
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -58,6 +61,30 @@ mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
+
+const freckleClusters = [
+  { cx: 70, cy: 108, count: 50, radius: 18, squash: 0.6 }, //left cheek
+  { cx: 130, cy: 108, count: 50, radius: 18, squash: 0.6 }, //right cheek
+  { cx: 100, cy: 92, count: 20, radius: 9, squash: 0.35 }, //nose bridge
+];
+const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+
+for (const cluster of freckleClusters) {
+  for (let i = 0; i < cluster.count; i++) {
+    const distance = cluster.radius * Math.sqrt((i + 0.5) / cluster.count);
+    const angle = i * goldenAngle;
+    const freckle = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle",
+    );
+    freckle.setAttribute("cx", String(cluster.cx + distance * Math.cos(angle)));
+    freckle.setAttribute("cy", String(cluster.cy + distance * Math.sin(angle)));
+    freckle.setAttribute("r", String(1.2 + (i % 3) * (0.4)));
+    freckle.setAttribute("fill", "#a0522d");
+    freckle.setAttribute("opacity", "0.7");
+    face.append(freckle);
+  }
+}
 
 portrait.append(face);
 
