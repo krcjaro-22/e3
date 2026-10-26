@@ -1,3 +1,8 @@
+// @deno-types="./asset-url.d.ts"
+import glassesUrl from "./assets/glasses.png?no-inline";
+// @deno-types="./asset-url.d.ts"
+import hatUrl from "./assets/hat.png?no-inline";
+
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
@@ -5,7 +10,7 @@ const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute("aria-label", "A face wearing glasses and a hat");
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -58,6 +63,27 @@ mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
+//hat.png: hat from "Hats n Hats" asset pack from itch.io made by user Charasan
+//https://charasan.itch.io/hats-n-htas/download/eyJpZCI6MjA2MTkyOSwiZXhwaXJlcyI6MTc5Mjk3ODI4MX0%3D.O%2B6py5JfHAzwEbzHDPkPB%2BA6TNY%3D
+//free for personal and commercial use
+const hat = document.createElementNS("http://www.w3.org/2000/svg", "image");
+hat.setAttribute("href", hatUrl);
+hat.setAttribute("x", "35");
+hat.setAttribute("y", "0");
+hat.setAttribute("width", "130");
+hat.setAttribute("height", "60");
+face.append(hat);
+
+//glasses.png: glasses from "Free Pixel Glasses Pack - 4 Classic Shapes (PNG)" from itch.io made by user Merino Kobo
+//https://merino-kobo.itch.io/free-pixel-glasses-pack-4-classic-shapes-png/download/eyJpZCI6MzUxOTI4NywiZXhwaXJlcyI6MTc5Mjk3ODQ4MH0%3D.DgBG0wOVtKfJ71ARGIIuXoC0%2F7o%3D
+//free for personal and commercial use
+const glasses = document.createElementNS("http://www.w3.org/2000/svg", "image");
+glasses.setAttribute("href", glassesUrl);
+glasses.setAttribute("x", "48");
+glasses.setAttribute("y", "64");
+glasses.setAttribute("width", "104");
+glasses.setAttribute("height", "36");
+face.append(glasses);
 
 portrait.append(face);
 
