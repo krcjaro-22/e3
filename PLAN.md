@@ -22,3 +22,7 @@
 ## Criterion for choosing
 
 Whichever one reads clearly as a distinct personality at small size.
+
+## Decision
+
+Chose C. Against the criterion, it reads the most clear as a distinct personality at small size. The orange to blue head and lopsided smile still show a nervous face even when its tiny. A's freckles blur and B's glasses and hat were also a bit blurry when small. C was rebased onto main after the buildFace() refactor, so its gradient and smile now live inside buildFace().
